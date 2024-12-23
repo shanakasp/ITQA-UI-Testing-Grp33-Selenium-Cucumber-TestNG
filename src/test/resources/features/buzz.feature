@@ -6,3 +6,12 @@ Feature: OrangeHRM Buzz Functionality
     And User clicks Most Liked Posts
     And User clicks Most Commented Posts
     And User clicks Most Recent Posts
+
+    Given User add post "We are going to test this works or not. "
+    And User clicks on add post button
+
+    Given User clicks three dots button
+    When User click edit post from dropdown
+    Then Edit post like " Ok, This works"
+    And Click on Post button
+    
