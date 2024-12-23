@@ -1,9 +1,18 @@
+@Login
 Feature: OrangeHRM Login Functionality
 
-  @SmokeTest
-  Scenario: Successful Login to OrangeHRM
+  Scenario Outline: Login to OrangeHRM
     Given User is on OrangeHRM login page
-    When User enters username "Admin"
-    And User enters password "admin123"
+    When User enters username "<username>"
+    And User enters password "<password>"
     And User clicks login button
-    Then User should be redirected to dashboard
+    Then User sees "<expectedResult>"
+
+
+    Examples:
+      | username   | password     | expectedResult             |
+      | invaliduser| admin123    | User name is wrong        |
+      | Admin | wrongUser    | Password is wrong        |
+      | Admin      | admin123     | is redirected to the dashboard |
+
+
