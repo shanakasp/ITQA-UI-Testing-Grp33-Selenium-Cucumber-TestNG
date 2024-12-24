@@ -15,3 +15,12 @@ Feature: OrangeHRM Buzz Functionality
     Then Edit post like " Ok, This works"
     And Click on Post button
     
+    
+    Given User add heart to a post
+    Given User add comment to a post
+    Then User writes comment "Let's see. "
+
+    Given User clicks three dots button
+    When User click delete post from dropdown
+    Then  User confirms delete comment
+    
