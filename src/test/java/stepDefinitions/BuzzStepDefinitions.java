@@ -112,6 +112,80 @@ public class BuzzStepDefinitions {
 	        seleniumUtils.captureScreenshot("AfterClickingEditPostButton");
 	    }
 
+	    @Given("User add heart to a post")
+	    public void addHeartToPost() {
+	        seleniumUtils.addDelay(1);
+	        seleniumUtils.captureScreenshot("BeforeAddingHeart");
+	        WebElement heartButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".orangehrm-heart-icon")));
+	        heartButton.click();
+	        seleniumUtils.addDelay(1);
+	        seleniumUtils.captureScreenshot("AfterAddingHeart");
+	    }
+	    @Given("User add comment to a post")
+	    public void addCommentToPost() {
+	        seleniumUtils.addDelay(1);
+	        seleniumUtils.captureScreenshot("BeforeAddingComment");
+	        WebElement commentButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".oxd-icon.bi-chat-text-fill")));
+	        commentButton.click();
+	        seleniumUtils.addDelay(1);
+	        seleniumUtils.captureScreenshot("AfterAddingComment");
+	    }
+
+	    @Then("User writes comment {string}")
+	    public void writeComment(String comment) {
+	        seleniumUtils.addDelay(1);
+	        seleniumUtils.captureScreenshot("BeforeWritingComment");
+
+	        try {
+	            // Use a more robust locator strategy
+	            WebElement commentInput = wait.until(ExpectedConditions.elementToBeClickable(
+	                    By.xpath("//input[@placeholder='Write your comment...']")
+	            ));
+
+	            // Clear any existing text first
+	            commentInput.clear();
+
+	            // Send the comment
+	            commentInput.sendKeys(comment);
+
+	            // Press Enter key
+	            commentInput.sendKeys(Keys.ENTER);
+
+	            seleniumUtils.addDelay(1);
+	            seleniumUtils.captureScreenshot("AfterWritingComment");
+	        } catch (Exception e) {
+	            // Log the error or take appropriate action
+	            System.out.println("Failed to write comment: " + e.getMessage());
+	            throw e;
+	        }
+	    }
+
+	    @When("User click delete post from dropdown")
+	    public void clickDeletePostFromDropdown() {
+	        seleniumUtils.addDelay(1);
+	        seleniumUtils.captureScreenshot("BeforeClickingDeletePost");
+
+	        // Locate and click the Edit Post option from dropdown
+	        WebElement editPostOption = wait.until(ExpectedConditions.elementToBeClickable(
+	                By.xpath("//p[text()='Delete Post']/..")));
+	        editPostOption.click();
+
+	        seleniumUtils.addDelay(1);
+	        seleniumUtils.captureScreenshot("AfterClickingDeletePost");
+	    }
+
+
+	    @Then("User confirms delete comment")
+	    public void confirmDeleteComment() {
+	        seleniumUtils.addDelay(1);
+	        seleniumUtils.captureScreenshot("BeforeConfirmingDeleteComment");
+	        WebElement confirmDeleteButton = wait.until(ExpectedConditions.elementToBeClickable(
+	                By.xpath("//button[contains(., 'Yes, Delete')]")));
+	        confirmDeleteButton.click();
+	        seleniumUtils.addDelay(1);
+	        seleniumUtils.captureScreenshot("AfterConfirmingDeleteComment");
+	    }
+	}
 
 
 }
