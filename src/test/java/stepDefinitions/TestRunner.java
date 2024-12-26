@@ -11,9 +11,10 @@ import org.testng.annotations.DataProvider;
                 "pretty",
                 "json:target/cucumber.json",
                 "html:target/cucumber-reports/cucumber.html"
-        },
-        tags = "@LoginPageURLCheck or @Login or @ChangePassword or @BuzzComplete or @LogoutCheck"
+        },tags = "@Login or @InputValidationMyInfo"
 
+
+//tags = "@LoginPageURLCheck or @Login or @ChangePassword or @BuzzComplete or @LogoutCheck or @InputValidationMyInfo"
 
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
@@ -23,3 +24,4 @@ public class TestRunner extends AbstractTestNGCucumberTests {
                 return super.scenarios();
         }
 }
+
