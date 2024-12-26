@@ -12,8 +12,11 @@ import org.testng.annotations.DataProvider;
                 "json:target/cucumber.json",
                 "html:target/cucumber-reports/cucumber.html"
         },tags = "@LoginPageURLCheck or @Login or @ChangePassword or @BuzzComplete or @LogoutCheck or @InputValidationMyInfo or @SearchReport"
-)
 
+
+
+
+)
 public class TestRunner extends AbstractTestNGCucumberTests {
         @Override
         @DataProvider(parallel = false)
