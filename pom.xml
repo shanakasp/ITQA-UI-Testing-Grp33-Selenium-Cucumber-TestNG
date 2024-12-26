@@ -64,22 +64,13 @@
             <version>1.7.36</version>
         </dependency>
 
-
-
-            <!-- Selenium WebDriver -->
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-java</artifactId>
-                <version>4.15.0</version>
-            </dependency>
-
-            <!-- WebDriverManager to help manage driver binaries -->
-            <dependency>
-                <groupId>io.github.bonigarcia</groupId>
-                <artifactId>webdrivermanager</artifactId>
-                <version>5.6.2</version>
-            </dependency>
-
+        <!-- JUnit (Optional, if you're using JUnit) -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

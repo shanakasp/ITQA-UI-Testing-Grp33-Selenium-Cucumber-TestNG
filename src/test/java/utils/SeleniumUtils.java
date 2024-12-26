@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SeleniumUtils {
     private static WebDriver staticDriver;
-    private WebDriver driver;
+    private static WebDriver driver;
     private WebDriverWait wait;
     private Scenario scenario;
     private static int scenarioCount = 0;
@@ -123,7 +123,7 @@ public class SeleniumUtils {
         }
     }
 
-    public WebDriver getDriver() {
+    public static WebDriver getDriver() {
         return driver;
     }
 
