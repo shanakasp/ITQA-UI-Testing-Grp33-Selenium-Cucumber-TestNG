@@ -70,8 +70,16 @@ public class SaveHolidaysStepsDefinitions {
 
     @Then("the user should see a success message {string}")
     public void the_user_should_see_a_success_message(String expectedMessage) {
-        WebElement successMessage = driver.findElement(By.xpath("//div[contains(text(),'Successfully Saved')]"));
-        Assertions.assertEquals(expectedMessage, successMessage.getText());
+        // Check if the success or failure message is displayed based on the scenario
+        WebElement message;
+        try {
+            message = driver.findElement(By.xpath("//div[contains(text(),'Successfully Saved')]"));
+            Assertions.assertEquals(expectedMessage, message.getText());
+        } catch (Exception e) {
+            // In case of failure or error, check for the "Unsuccessfully Saved" message or other error indications
+            message = driver.findElement(By.xpath("//div[contains(text(),'Unsuccessfully Saved')]"));
+            Assertions.assertEquals(expectedMessage, message.getText());
+        }
     }
 
 
