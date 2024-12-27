@@ -8,9 +8,9 @@ Feature: Save Holidays in OrangeHRM
     Then the user should see a success message "<successMessage>"
 
     Examples:
-      | holidayName | holidayDate | holidayType | buttonName | successMessage   |
-      | Christmas   | 2024-12-25  | Full Day    | Save      | Successfully Saved |
-      | New Year    | 2025-01-01  | Half Day    | Save      | Successfully Saved |
+      | holidayName      | holidayDate | holidayType | buttonName | successMessage       |
+      | Christmas        | 2024-12-25  | Full Day    | Save       | Successfully Saved   |
+      | @123Christmas    | 2025-01-01  | Half Day    | Save       | UnSuccessfully Saved |
 
   @CancelHoliday
   Scenario: User cancels the holiday addition
