@@ -123,6 +123,16 @@ public class SeleniumUtils {
         }
     }
 
+    public boolean waitForCondition(java.util.function.Function<WebDriver, Boolean> condition, int timeoutSeconds) {
+        try {
+            WebDriverWait customWait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+            return customWait.until(driver -> condition.apply(driver));
+        } catch (TimeoutException e) {
+            System.err.println("Condition not met within " + timeoutSeconds + " seconds.");
+            return false;
+        }
+    }
+
     public static WebDriver getDriver() {
         return driver;
     }
