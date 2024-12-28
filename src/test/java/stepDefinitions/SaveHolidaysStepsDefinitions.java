@@ -38,33 +38,43 @@ public class SaveHolidaysStepsDefinitions {
     }
 
     @When("the user enters holiday details with name {string}, date {string}, selects {string}, and repeats annually")
-    public void theUserEntersHolidayDetails(String holidayName, String holidayDate, String dayType) {
+    public void theUserEntersHolidayDetails(String holidayName, String holidayDate, String holidayType) {
         try {
             // Wait for and fill holiday name
             WebElement holidayNameField = wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.name("holiday[holidayName]")));
+                    By.xpath("//label[text()='Name']/following::input[@class='oxd-input oxd-input--active']")));
             holidayNameField.clear();
             holidayNameField.sendKeys(holidayName);
 
             // Wait for and fill holiday date
             WebElement holidayDateField = wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.name("holiday[holidayDate]")));
+                    By.xpath("//label[text()='Date']/following::input[@placeholder='yyyy-dd-mm']")));
             holidayDateField.clear();
             holidayDateField.sendKeys(holidayDate);
 
-            // Select day type
-            WebElement dayTypeElement = wait.until(ExpectedConditions.presenceOfElementLocated(
-                    dayType.equals("Full Day") ? By.id("holiday_fullDay") : By.id("holiday_halfDay")));
-            if (!dayTypeElement.isSelected()) {
-                dayTypeElement.click();
-            }
+            // Wait until the loader disappears
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.xpath("//div[@class='oxd-form-loader']")));
 
             // Select repeat annually
-            WebElement repeatAnnuallyElement = wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.id("holiday_repeatAnnuallyYes")));
-            if (!repeatAnnuallyElement.isSelected()) {
-                repeatAnnuallyElement.click();
+            WebElement repeatAnnuallyYes = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//label[text()='Repeats Annually']/following::input[@value='true']")));
+            repeatAnnuallyYes.click();
+
+            // Select day type from dropdown
+            WebElement dayTypeDropdown = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//label[text()='Full Day/ Half Day']/following::div[@class='oxd-select-wrapper']")));
+            dayTypeDropdown.click();
+
+            WebElement dayTypeOption;
+            if (holidayType.equals("Full Day")) {
+                dayTypeOption = wait.until(ExpectedConditions.presenceOfElementLocated(
+                        By.xpath("//div[@class='oxd-select-text-input' and text()='Full Day']")));
+            } else {
+                dayTypeOption = wait.until(ExpectedConditions.presenceOfElementLocated(
+                        By.xpath("//div[@class='oxd-select-text-input' and text()='Half Day']")));
             }
+            dayTypeOption.click();
         } catch (Exception e) {
             scenario.log("Failed to enter holiday details: " + e.getMessage());
             throw e;
@@ -75,7 +85,7 @@ public class SaveHolidaysStepsDefinitions {
     public void theUserClicksOnTheButton(String buttonName) {
         try {
             By buttonLocator = buttonName.equals("Save")
-                    ? By.xpath("//button[@type='submit']")
+                    ? By.xpath("//button[contains(@class,'oxd-button--secondary') and text()=' Save ']")
                     : By.xpath("//button[@type='button' and text()='Cancel']");
 
             WebElement button = wait.until(ExpectedConditions.elementToBeClickable(buttonLocator));

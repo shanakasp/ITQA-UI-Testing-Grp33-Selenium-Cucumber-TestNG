@@ -9,7 +9,7 @@ Feature: Save Holidays in OrangeHRM
 
     Examples:
       | holidayName      | holidayDate | holidayType | buttonName | successMessage       |
-      | Christmas        | 2024-12-25  | Full Day    | Save       | Successfully Saved   |
+      | Christmas        | 2024-31-12  | Full Day    | Save       | Successfully Saved   |
       | @123Christmas    | 2025-01-01  | Half Day    | Save       | UnSuccessfully Saved |
 
   @CancelHoliday
