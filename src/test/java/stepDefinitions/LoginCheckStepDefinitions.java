@@ -37,7 +37,7 @@ public class LoginCheckStepDefinitions {
         seleniumUtils.captureScreenshot("EnterUsername");
     }
 
-    @When("User enters password {string}")
+    @And("User enters password {string}")
     public void userEntersPassword(String password) {
         if (!seleniumUtils.isPasswordValid(password)) {
             System.err.println("Password does not meet criteria.");
@@ -50,7 +50,7 @@ public class LoginCheckStepDefinitions {
         seleniumUtils.captureScreenshot("EnterPassword");
     }
 
-    @When("User clicks login button")
+    @And("User clicks login button")
     public void userClicksLoginButton() {
         seleniumUtils.findClickableElement(By.cssSelector("button[type='submit']"))
                 .click();
@@ -83,5 +83,11 @@ public class LoginCheckStepDefinitions {
 
 
 
-
+    @After
+    public void tearDown() {
+        if (scenario.isFailed()) {
+            seleniumUtils.captureScreenshot("Failure");
+        }
+       // seleniumUtils.quitDriver();
+    }
 }

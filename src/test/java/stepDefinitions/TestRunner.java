@@ -7,17 +7,15 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "stepDefinitions",
-        monochrome = true,
         plugin = {
                 "pretty",
                 "json:target/cucumber.json",
                 "html:target/cucumber-reports/cucumber.html",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
-        },tags = "@LoginPageURLCheck or @Login or @ChangePassword or @SearchReport or @InputValidationMyInfo or @BuzzComplete or @LogoutCheck "
+        },
+        tags =  "@LoginPageURLCheck or @Login or @ChangePassword or @BuzzComplete or  @SearchReport or @InputValidationMyInfo  or @LogoutCheck"
 
-
-//tags = "@LoginPageURLCheck or @Login or @ChangePassword or @BuzzComplete or  @SearchReport or @InputValidationMyInfo or @SaveHoliday  or @LogoutCheck"
-
+        //        "@LoginPageURLCheck or @Login or @ChangePassword or @BuzzComplete or @LogoutCheck @SaveHoliday" // Corrected tag expression
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
         @Override
@@ -26,4 +24,3 @@ public class TestRunner extends AbstractTestNGCucumberTests {
                 return super.scenarios();
         }
 }
-
