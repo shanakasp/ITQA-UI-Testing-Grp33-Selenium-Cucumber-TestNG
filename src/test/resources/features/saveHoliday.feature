@@ -11,7 +11,7 @@ Feature: Save Holidays
 
   Scenario: Add a holiday without name
     Given the user navigates to the Save Holidays page
-    When the user enters holiday details with name "" and date "2030-01-04"
+    When the user enters holiday details with name "" and date "2030-01-05"
     And the user clicks on the "Save" button
     Then the user should see a success message "required"
     And the user should be redirected back to the Holidays list page
