@@ -47,7 +47,7 @@ public class SaveHoliday {
 
             // Wait for and fill holiday date
             WebElement holidayDateField = wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.xpath("//label[text()='Date']/following::input[@placeholder='yyyy-mm-dd']")));
+                    By.xpath("//label[text()='Date']/following::input[@placeholder='yyyy-dd-mm']")));
             holidayDateField.clear();
             holidayDateField.sendKeys(holidayDate);
 
@@ -126,6 +126,5 @@ public class SaveHoliday {
             } catch (Exception e) {
                 scenario.log("Failed to clean up after scenario: " + e.getMessage());
             }
-        }
-    }
 }
+}}

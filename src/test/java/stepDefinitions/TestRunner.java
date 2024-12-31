@@ -7,14 +7,15 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "stepDefinitions",
+        monochrome = true,
         plugin = {
                 "pretty",
                 "json:target/cucumber.json",
                 "html:target/cucumber-reports/cucumber.html"
-        },tags = "@LoginPageURLCheck or @Login or @ChangePassword or @BuzzComplete or  @SearchReport or @InputValidationMyInfo or @SaveHoliday  or @LogoutCheck"
+        },tags = "@LoginPageURLCheck or @Login or @ChangePassword or @SearchReport or @InputValidationMyInfo or @BuzzComplete or @LogoutCheck "
 
 
-
+//tags = "@LoginPageURLCheck or @Login or @ChangePassword or @BuzzComplete or  @SearchReport or @InputValidationMyInfo or @SaveHoliday  or @LogoutCheck"
 
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
