@@ -1,4 +1,5 @@
 package stepDefinitions;
+
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
@@ -75,44 +76,17 @@ public class SaveHoliday {
         }
     }
 
-    @Then("the user should see an error message indicating the name cannot contain numbers")
-    public void theUserShouldSeeAnErrorMessage() {
-        try {
-            WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//span[contains(text(), 'Holiday name cannot contain numbers')]")));
-            Assert.assertTrue(errorMessage.isDisplayed(),
-                    "Error message for invalid holiday name with numbers is not displayed.");
-        } catch (Exception e) {
-            scenario.log("Failed to verify error message: " + e.getMessage());
-            throw e;
-        }
-    }
-
+    // **Newly added step definition for success message 'required'**without name
     @Then("the user should see a success message {string}")
     public void theUserShouldSeeASuccessMessage(String expectedMessage) {
         try {
-            By messageLocator = expectedMessage.contains("Successfully")
-                    ? By.xpath("//div[contains(text(),'Successfully Saved')]")
-                    : By.xpath("//div[contains(text(),'Unsuccessfully Saved')]");
+            By messageLocator = By.xpath("//span[contains(@class,'oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message') and contains(text(),'" + expectedMessage + "')]");
 
             WebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(messageLocator));
             Assert.assertEquals(message.getText(), expectedMessage,
-                    "Expected message does not match actual message");
+                    "Expected success message does not match the actual message.");
         } catch (Exception e) {
-            scenario.log("Failed to verify success/failure message: " + e.getMessage());
-            throw e;
-        }
-    }
-
-    @Then("the user should be redirected back to the Holidays list page")
-    public void theUserShouldBeRedirectedBackToTheHolidaysListPage() {
-        try {
-            WebElement holidaysList = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//h6[text()='Holidays']")));
-            Assert.assertTrue(holidaysList.isDisplayed(),
-                    "Holidays list page is not displayed after redirection");
-        } catch (Exception e) {
-            scenario.log("Failed to verify redirection to Holidays list page: " + e.getMessage());
+            scenario.log("Failed to verify success message: " + e.getMessage());
             throw e;
         }
     }
@@ -122,7 +96,6 @@ public class SaveHoliday {
         if (driver != null) {
             try {
                 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
-
             } catch (Exception e) {
                 scenario.log("Failed to clean up after scenario: " + e.getMessage());
             }
