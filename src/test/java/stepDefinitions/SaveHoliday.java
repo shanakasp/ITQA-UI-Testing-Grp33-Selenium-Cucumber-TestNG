@@ -47,7 +47,7 @@ public class SaveHoliday {
 
             // Wait for and fill holiday date
             WebElement holidayDateField = wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.xpath("//label[text()='Date']/following::input[@placeholder='yyyy-mm-dd']")));
+                    By.xpath("//label[text()='Date']/following::input[@placeholder='yyyy-dd-mm']")));
             holidayDateField.clear();
             holidayDateField.sendKeys(holidayDate);
 
