@@ -11,7 +11,8 @@ import org.testng.annotations.DataProvider;
         plugin = {
                 "pretty",
                 "json:target/cucumber.json",
-                "html:target/cucumber-reports/cucumber.html"
+                "html:target/cucumber-reports/cucumber.html",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         },tags = "@LoginPageURLCheck or @Login or @ChangePassword or @SearchReport or @InputValidationMyInfo or @BuzzComplete or @LogoutCheck "
 
 
