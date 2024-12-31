@@ -114,7 +114,26 @@ public class SaveHoliday {
             throw e;
         }
     }
+    // **Newly added method for verifying "required" messages near both Name and Date fields**
+    @Then("the user should see a required message near both Name and Date fields")
+    public void theUserShouldSeeARequiredMessageNearBothNameAndDateFields() {
+        try {
+            // **Locate the "required" message for the Name field**
+            By nameRequiredMessageLocator = By.xpath("//label[text()='Name']/following::span[contains(text(),'required')]");
+            WebElement nameRequiredMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(nameRequiredMessageLocator));
+            Assert.assertEquals(nameRequiredMessage.getText(), "required",
+                    "Expected 'required' message not displayed near Name field.");
 
+            // **Locate the "required" message for the Date field**
+            By dateRequiredMessageLocator = By.xpath("//label[text()='Date']/following::span[contains(text(),'required')]");
+            WebElement dateRequiredMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(dateRequiredMessageLocator));
+            Assert.assertEquals(dateRequiredMessage.getText(), "required",
+                    "Expected 'required' message not displayed near Date field.");
+        } catch (Exception e) {
+            scenario.log("Failed to verify 'required' message near Name and Date fields: " + e.getMessage());
+            throw e;
+        }
+    }
     // Method to clean up after scenarios if needed
     public void tearDown() {
         if (driver != null) {
@@ -126,3 +145,4 @@ public class SaveHoliday {
         }
     }
 }
+
