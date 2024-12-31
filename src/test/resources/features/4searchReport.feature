@@ -10,6 +10,6 @@ Feature: Report Search Functionality on OrangeHRM
     And User navigates back to the dashboard
 
     Examples:
-      | reportName                           | expectedResult |
+      | reportName                             | expectedResult |
       | All Employee Sub Unit Hierarchy Report | 1              |
-      | Non Existent Report                  | 0              |
+      | Non Existent Report                    | 0              |

@@ -10,9 +10,9 @@ Feature: OrangeHRM Login Functionality
 
 
     Examples:
-      | username   | password     | expectedResult             |
-      | invalid user| admin123    | User name is wrong        |
-      | Admin | wrongUser    | Password is wrong        |
-      | Admin      | admin123     | is redirected to the dashboard |
+      | username     | password     | expectedResult                 |
+      | invalid user | admin123     | User name is wrong             |
+      | Admin        | wrongUser    | Password is wrong              |
+      | Admin        | admin123     | is redirected to the dashboard |
 
 
