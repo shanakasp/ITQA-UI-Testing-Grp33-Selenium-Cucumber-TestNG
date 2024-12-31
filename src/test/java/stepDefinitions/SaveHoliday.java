@@ -76,7 +76,7 @@ public class SaveHoliday {
         }
     }
 
-    // **Newly added step definition for success message 'required'**without name
+    // **Newly added step definition for success message 'required' (for when only name is provided)**
     @Then("the user should see a success message {string}")
     public void theUserShouldSeeASuccessMessage(String expectedMessage) {
         try {
@@ -87,6 +87,30 @@ public class SaveHoliday {
                     "Expected success message does not match the actual message.");
         } catch (Exception e) {
             scenario.log("Failed to verify success message: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    // **Newly added step for handling empty date input (to show "required" message)**
+    @When("the user enters holiday details with name {string} and date ''")
+    public void theUserEntersHolidayDetailsWithNameAndEmptyDate(String holidayName) {
+        try {
+            // Wait for and fill holiday name
+            WebElement holidayNameField = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//label[text()='Name']/following::input[@class='oxd-input oxd-input--active']")));
+            holidayNameField.clear();
+            holidayNameField.sendKeys(holidayName);
+
+            // Wait for and leave holiday date empty
+            WebElement holidayDateField = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//label[text()='Date']/following::input[@placeholder='yyyy-dd-mm']")));
+            holidayDateField.clear(); // Make sure the date field is empty
+
+            // Wait until the loader disappears
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.xpath("//div[@class='oxd-form-loader']")));
+        } catch (Exception e) {
+            scenario.log("Failed to enter holiday details with empty date: " + e.getMessage());
             throw e;
         }
     }

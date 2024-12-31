@@ -11,7 +11,9 @@ import org.testng.annotations.DataProvider;
                 "pretty",
                 "json:target/cucumber.json",
                 "html:target/cucumber-reports/cucumber.html"
-        }, tags = "@LoginPageURLCheck or @Login or @ChangePassword or @BuzzComplete or  @SearchReport or @LogoutCheck or @InputValidationMyInfo or @SaveHoliday"
+        },  tags = " @Login or @SaveHoliday"
+
+        //tags = "@LoginPageURLCheck or @Login or @ChangePassword or @BuzzComplete or  @SearchReport or @LogoutCheck or @InputValidationMyInfo or @SaveHoliday"
 
 
 )
