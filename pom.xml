@@ -21,6 +21,7 @@
     </properties>
 
     <dependencies>
+
         <!-- Selenium WebDriver -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -64,14 +65,20 @@
             <version>1.7.36</version>
         </dependency>
 
-        <!-- JUnit (Optional, if you're using JUnit) -->
+        <!-- Allure dependencies -->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.7.2</version>
-            <scope>test</scope>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <version>2.24.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.24.0</version>
         </dependency>
     </dependencies>
+
+
 
     <build>
         <plugins>
@@ -93,27 +100,27 @@
             </plugin>
 
             <!-- Maven Cucumber Reporting Plugin -->
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>5.7.0</version>
-                <executions>
-                    <execution>
-                        <id>execution</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>SeleniumCucumberBDDFrameworkwithJavaandTestNG</projectName>
-                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
-                            <jsonFiles>
-                                <param>${project.build.directory}/cucumber.json</param>
-                            </jsonFiles>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>net.masterthought</groupId>-->
+            <!--                <artifactId>maven-cucumber-reporting</artifactId>-->
+            <!--                <version>5.7.0</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>execution</id>-->
+            <!--                        <phase>verify</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generate</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <projectName>SeleniumCucumberBDDFrameworkwithJavaandTestNG</projectName>-->
+            <!--                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>-->
+            <!--                            <jsonFiles>-->
+            <!--                                <param>${project.build.directory}/cucumber.json</param>-->
+            <!--                            </jsonFiles>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
 </project>
