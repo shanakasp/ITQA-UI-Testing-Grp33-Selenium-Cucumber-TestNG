@@ -50,7 +50,8 @@ public class SeleniumUtils {
                 "--no-sandbox",
                 "--disable-dev-shm-usage",
                 "--disable-gpu",
-                "--disable-extensions"
+                "--disable-extensions",
+                "--start-maximized"
         );
 
         driver = new ChromeDriver(options);
