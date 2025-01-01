@@ -57,7 +57,7 @@ public class Buzz {
         seleniumUtils.captureScreenshot("VerifyNavigation");
     }
 
-    @Then("User clicks Most Recent Posts")
+    @When("User clicks Most Recent Posts")
     public void clickMostRecentPosts() {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeClickMostRecentPosts");
@@ -73,7 +73,7 @@ public class Buzz {
         verifyBuzzPage();
     }
 
-    @Then("User clicks Most Liked Posts")
+    @When("User clicks Most Liked Posts")
     public void clickMostLikedPosts() {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeClickMostLikedPosts");
@@ -89,7 +89,7 @@ public class Buzz {
         verifyBuzzPage();
     }
 
-    @Then("User clicks Most Commented Posts")
+    @When("User clicks Most Commented Posts")
     public void clickMostCommentedPosts() {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeClickMostCommentedPosts");
@@ -113,7 +113,7 @@ public class Buzz {
         seleniumUtils.captureScreenshot("VerifyBuzzPage");
     }
 
-    @Given("User add post {string}")
+    @When("User add post {string}")
     public void addPost(String postContent) {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeAddingPost");
@@ -131,7 +131,7 @@ public class Buzz {
     }
 
 
-    @And("User clicks on add post button")
+    @Then("User clicks on add post button")
     public void clickAddPostButton() {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeClickingAddPostButton");
@@ -145,7 +145,7 @@ public class Buzz {
         seleniumUtils.captureScreenshot("AfterClickingAddPostButton");
     }
 
-    @Given("User clicks three dots button")
+    @When("User clicks three dots button")
     public void clickThreeDotsButton() {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeClickingThreeDots");
@@ -159,7 +159,7 @@ public class Buzz {
         seleniumUtils.captureScreenshot("AfterClickingThreeDots");
     }
 
-    @When("User click edit post from dropdown")
+    @And("User click edit post from dropdown")
     public void clickEditPostFromDropdown() {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeClickingEditPost");
@@ -173,7 +173,7 @@ public class Buzz {
         seleniumUtils.captureScreenshot("AfterClickingEditPost");
     }
 
-    @Then("Edit post like {string}")
+    @And("Edit post like {string}")
     public void editPostContent(String newPostContent) {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeEditingPost");
@@ -188,7 +188,7 @@ public class Buzz {
         seleniumUtils.captureScreenshot("AfterEditingPostContent");
     }
 
-    @And("Click on Post button")
+    @Then("Click on Post button")
     public void clickEditPostButton() {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeClickingEditPostButton");
@@ -202,7 +202,7 @@ public class Buzz {
         seleniumUtils.captureScreenshot("AfterClickingEditPostButton");
     }
 
-    @Given("User add heart to a post")
+    @When("User add heart to a post")
     public void addHeartToPost() {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeAddingHeart");
@@ -226,7 +226,7 @@ public class Buzz {
     }
 
 
-    @Given("User add comment to a post")
+    @When("User add comment to a post")
     public void addCommentToPost() {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeAddingComment");
@@ -265,7 +265,7 @@ public class Buzz {
         }
     }
 
-    @When("User click delete post from dropdown")
+    @And("User click delete post from dropdown")
     public void clickDeletePostFromDropdown() {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeClickingDeletePost");
