@@ -1,7 +1,7 @@
 @BuzzComplete
 Feature: OrangeHRM Buzz Functionality Check
 
-  Scenario: Check post filtering functionalities Most Commented Posts
+  Scenario: Check post filtering functionalities
 
     Given User clicks on Buzz in side menu bar
 
