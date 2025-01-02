@@ -1,4 +1,4 @@
-@SaveHoliday
+
 Feature: Save Holidays
   This feature allows users to add a holiday with name and date and verify the outcomes.
 

@@ -4,15 +4,16 @@ Feature: Job Vacancy Management
   I want to manage job vacancies
   So that I can maintain an updated list of job openings
 
-  Scenario: Search and navigate to Job Vacancy Management
+  Background:
     Given User clicks on Recruitment in side menu bar for Recruitment
     Then User clicks on vacancies
+
+  Scenario: Get all listed vacancies
     And Click on search button for see all the available jobs
 
-
-   Given User clicks on delete for job vacancies
-   Then User confirms delete job vacancy
-
+  Scenario: Delete job vacancy
+    Given User clicks on delete for job vacancies
+    Then User confirms delete job vacancy
 #
 #  Scenario: Search for a Job Vacancy
 #    When I enter "Software Engineer" in the Job Title field
