@@ -19,16 +19,26 @@ public class SaveHoliday {
 
     @Before
     public void setUp(Scenario scenario) {
+
         this.scenario = scenario;
         seleniumUtils = new SeleniumUtils(scenario);
     }
 
+
+
     @Given("the user navigates to the Save Holidays page")
     public void theUserNavigatesToTheSaveHolidaysPage() {
+        // Navigate to the Holiday List page first
+        seleniumUtils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewHolidayList");
+        seleniumUtils.addDelay(1);
+        seleniumUtils.captureScreenshot("NavigateToHolidayListPage");
+
+        // Then navigate to the Save Holidays page
         seleniumUtils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/leave/saveHolidays");
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("NavigateToSaveHolidaysPage");
     }
+
 
     @When("the user enters holiday details with name {string} and date {string}")
     public void theUserEntersHolidayDetails(String holidayName, String holidayDate) {
