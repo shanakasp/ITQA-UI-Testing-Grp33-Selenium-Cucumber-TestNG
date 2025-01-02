@@ -14,6 +14,12 @@ Feature: Job Vacancy Management
   Scenario: Delete job vacancy
     Given User clicks on delete for job vacancies
     Then User confirms delete job vacancy
+
+  Scenario: Edit an existing Job Vacancy
+    When I select the job vacancy "Software Engineer"
+    And I click "Edit"
+    And I update the Hiring Manager to "Jane Smith"
+    And I click "Save"
 #
 #  Scenario: Search for a Job Vacancy
 #    When I enter "Software Engineer" in the Job Title field
