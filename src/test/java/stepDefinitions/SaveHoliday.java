@@ -27,11 +27,23 @@ public class SaveHoliday {
     // Navigate to Save Holidays page
     @Given("the user navigates to the Save Holidays page")
     public void theUserNavigatesToTheSaveHolidaysPage() {
-        seleniumUtils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/leave/saveHolidays");
+        try {
 
-        seleniumUtils.addDelay(2);
-        seleniumUtils.captureScreenshot("NavigateToSaveHolidaysPage");
+            // Navigate to Holiday List page
+            seleniumUtils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewHolidayList");
+            seleniumUtils.addDelay(2);
+            seleniumUtils.captureScreenshot("NavigateToHolidayListPage");
+
+            // Finally, navigate to Save Holidays page
+            seleniumUtils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/leave/saveHolidays");
+            seleniumUtils.addDelay(2);
+            seleniumUtils.captureScreenshot("NavigateToSaveHolidaysPage");
+        } catch (Exception e) {
+            scenario.log("Failed to navigate to Save Holidays page: " + e.getMessage());
+            throw e;
+        }
     }
+
 
     // Enter holiday details
     @When("the user enters holiday details with name {string} and date {string}")
