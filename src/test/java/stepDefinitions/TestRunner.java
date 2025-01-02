@@ -13,7 +13,7 @@ import org.testng.annotations.DataProvider;
                 "html:target/cucumber-reports/cucumber.html",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         },
-        tags =  "@Login or @SaveHoliday"
+        tags =  "@LoginPageURLCheck or @Login or @ChangePassword or @InputValidationMyInfo or @SearchReport or @SaveHoliday or @JobVacancy or @BuzzComplete or @LogoutCheck"
 
         //          tags =  "@LoginPageURLCheck or @Login or @ChangePassword or @InputValidationMyInfo or @SearchReport or @SaveHoliday or @JobVacancy or @BuzzComplete or @LogoutCheck"
 )
