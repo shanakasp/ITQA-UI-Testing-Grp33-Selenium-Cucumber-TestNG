@@ -46,6 +46,7 @@ public class SaveHoliday {
 
     @When("the user enters holiday details with name {string} and date {string}")
     public void theUserEntersHolidayDetails(String holidayName, String holidayDate) {
+        seleniumUtils.addDelay(1);
         seleniumUtils.findElementWithWait(By.xpath("//label[text()='Name']/following::input[@class='oxd-input oxd-input--active']"))
                 .sendKeys(holidayName);
         seleniumUtils.findElementWithWait(By.xpath("//label[text()='Date']/following::input[@placeholder='yyyy-dd-mm']"))
@@ -57,6 +58,7 @@ public class SaveHoliday {
 
     @And("the user clicks on the {string} button")
     public void theUserClicksOnTheButton(String buttonName) {
+        seleniumUtils.addDelay(2);
         By buttonLocator;
         if (buttonName.equals("Save")) {
             buttonLocator = By.cssSelector("button.oxd-button.oxd-button--medium.oxd-button--secondary.orangehrm-left-space");
@@ -73,6 +75,7 @@ public class SaveHoliday {
 
     @Then("the user should see a success message")
     public void theUserShouldSeeASuccessMessage() {
+        seleniumUtils.addDelay(1);
         WebElement successMessage = seleniumUtils.findElementWithWait(
                 By.xpath("//span[contains(@class,'oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message')]"));
         Assert.assertTrue(successMessage.getText().contains("success"), "Expected success message does not match.");
@@ -80,12 +83,5 @@ public class SaveHoliday {
     }
 
 
-    @After
-    public void tearDown() {
-        if (seleniumUtils != null) {
-            seleniumUtils.quitDriver();
-        }
-    }
 }
-
 

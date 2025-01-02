@@ -2,6 +2,7 @@
 Feature: Save Holidays
   This feature allows users to add a holiday with name and date and verify the outcomes.
 
+
   Scenario: Add a holiday with repeated data.
     Given the user navigates to the Save Holidays page
     When the user enters holiday details with name "New Year" and date "1925-07-13"
@@ -9,7 +10,7 @@ Feature: Save Holidays
 
   Scenario: Add a holiday without name
     Given the user navigates to the Save Holidays page
-    When the user enters holiday details with name "" and date "2026-06-09"
+    When the user enters holiday details with name "" and date "2076-09-06"
     And the user clicks on the "Save" button
 
   Scenario: Add a holiday without date
@@ -24,5 +25,5 @@ Feature: Save Holidays
 
   Scenario: Add a holiday successfully.
     Given the user navigates to the Save Holidays page
-    When the user enters holiday details with name "New Year" and date "1966-07-16"
+    When the user enters holiday details with name "New Year" and date "1976-07-16"
     And the user clicks on the "Save" button

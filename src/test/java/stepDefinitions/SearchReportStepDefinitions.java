@@ -82,7 +82,7 @@ public class SearchReportStepDefinitions {
     @And("User navigates back to the dashboard")
     public void userNavigatesToDashboard() {
         seleniumUtils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
-        seleniumUtils.addDelay(2);
+        seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("NavigateToDashboard");
     }
 }
