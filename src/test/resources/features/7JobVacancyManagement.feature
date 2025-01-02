@@ -14,6 +14,7 @@ Feature: Job Vacancy Management
   Scenario: Delete job vacancy
     Given User clicks on delete for job vacancies
     Then User confirms delete job vacancy
+
 #
 #  Scenario: Search for a Job Vacancy
 #    When I enter "Software Engineer" in the Job Title field

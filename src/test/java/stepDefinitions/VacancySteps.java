@@ -73,6 +73,8 @@ public class VacancySteps {
 
     @Then("User clicks on vacancies")
     public void user_clicks_on_vacancies() {
+
+        seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("BeforeVacanciesClick");
 
         // Updated selector to specifically target the Vacancies link
@@ -80,9 +82,11 @@ public class VacancySteps {
                 By.xpath("//a[contains(@class, 'oxd-topbar-body-nav-tab-item') and text()='Vacancies']")));
         vacanciesTab.click();
 
+        seleniumUtils.addDelay(1);
+        seleniumUtils.captureScreenshot("AfterVacanciesClick");
         // Wait for URL to change to ensure navigation
         wait.until(ExpectedConditions.urlContains("/recruitment/viewJobVacancy"));
-        seleniumUtils.captureScreenshot("AfterVacanciesClick");
+
     }
 
 
@@ -129,7 +133,8 @@ public class VacancySteps {
 
             // Click the delete button using JavaScript
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", deleteButton);
-
+            seleniumUtils.addDelay(1);
+            seleniumUtils.captureScreenshot("DeleteButtonClickedJobVacancies");
             System.out.println("Delete button clicked successfully");
 
         } catch (Exception e) {
@@ -150,10 +155,12 @@ public class VacancySteps {
 
             // Add a small delay to allow scroll to complete
             Thread.sleep(500);
+            seleniumUtils.addDelay(1);
+            seleniumUtils.captureScreenshot("BeforeConfirmDeleteButtonJobVacancies");
 
             // Click the confirm delete button using JavaScript
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", confirmDeleteButton);
-            seleniumUtils.captureScreenshot("ConfirmDeleteButtonJobVacancy");
+
             System.out.println("Confirm delete button clicked successfully");
             seleniumUtils.addDelay(2);
             seleniumUtils.captureScreenshot("AfterConfirmDeleteButtonJobVacancy");

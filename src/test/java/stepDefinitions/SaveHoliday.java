@@ -30,10 +30,6 @@ public class SaveHoliday {
     }
 
 
-
-
-
-
     @Given("the user navigates to the Save Holidays page")
     public void theUserNavigatesToTheSaveHolidaysPage() {
         // Navigate to the Holiday List page first
@@ -41,14 +37,11 @@ public class SaveHoliday {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("NavigateToHolidayListPage");
 
-
         // Then navigate to the Save Holidays page
         seleniumUtils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/leave/saveHolidays");
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("NavigateToSaveHolidaysPage");
     }
-
-
 
 
     @When("the user enters holiday details with name {string} and date {string}")
