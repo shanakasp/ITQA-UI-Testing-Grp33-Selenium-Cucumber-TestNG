@@ -12,12 +12,6 @@
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- WebDriver Manager Version -->
-        <webdrivermanager.version>5.6.2</webdrivermanager.version>
-
-        <!-- Default WebDriver Path for Jenkins -->
-        <webdriver.edge.path>${project.basedir}/drivers/msedgedriver.exe</webdriver.edge.path>
     </properties>
 
     <dependencies>
@@ -26,13 +20,6 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.15.0</version>
-        </dependency>
-
-        <!-- WebDriverManager for automatic driver management -->
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
         </dependency>
 
         <!-- Cucumber for Java -->
@@ -56,30 +43,6 @@
             <version>7.8.0</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- SLF4J Simple Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.36</version>
-        </dependency>
-
-
-
-            <!-- Selenium WebDriver -->
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-java</artifactId>
-                <version>4.15.0</version>
-            </dependency>
-
-            <!-- WebDriverManager to help manage driver binaries -->
-            <dependency>
-                <groupId>io.github.bonigarcia</groupId>
-                <artifactId>webdrivermanager</artifactId>
-                <version>5.6.2</version>
-            </dependency>
-
     </dependencies>
 
     <build>
@@ -88,15 +51,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.3</version>
+                <version>3.0.0</version>
                 <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
-                    <includes>
-                        <include>**/TestRunner.java</include>
-                    </includes>
-                    <!-- System Properties for WebDriver -->
+                    <testFailureIgnore>false</testFailureIgnore>
                     <systemPropertyVariables>
-                        <webdriver.edge.driver>${webdriver.edge.path}</webdriver.edge.driver>
+                        <cucumber.filter.tags>@SmokeTest</cucumber.filter.tags>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -12,17 +13,24 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import utils.SeleniumUtils;
 
+
 public class SaveHoliday {
+
 
     private SeleniumUtils seleniumUtils;
     private Scenario scenario;
 
+
     @Before
     public void setUp(Scenario scenario) {
+
 
         this.scenario = scenario;
         seleniumUtils = new SeleniumUtils(scenario);
     }
+
+
+
 
 
 
@@ -33,11 +41,14 @@ public class SaveHoliday {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("NavigateToHolidayListPage");
 
+
         // Then navigate to the Save Holidays page
         seleniumUtils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/leave/saveHolidays");
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("NavigateToSaveHolidaysPage");
     }
+
+
 
 
     @When("the user enters holiday details with name {string} and date {string}")
@@ -49,6 +60,7 @@ public class SaveHoliday {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot("EnterHolidayDetails");
     }
+
 
     @And("the user clicks on the {string} button")
     public void theUserClicksOnTheButton(String buttonName) {
@@ -65,6 +77,7 @@ public class SaveHoliday {
         seleniumUtils.captureScreenshot(buttonName + "ButtonClick");
     }
 
+
     @Then("the user should see a success message")
     public void theUserShouldSeeASuccessMessage() {
         WebElement successMessage = seleniumUtils.findElementWithWait(
@@ -73,6 +86,7 @@ public class SaveHoliday {
         seleniumUtils.captureScreenshot("SuccessMessage");
     }
 
+
     @After
     public void tearDown() {
         if (seleniumUtils != null) {
@@ -80,3 +94,5 @@ public class SaveHoliday {
         }
     }
 }
+
+

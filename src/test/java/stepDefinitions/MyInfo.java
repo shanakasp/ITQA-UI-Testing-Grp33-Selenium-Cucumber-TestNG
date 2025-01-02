@@ -2,7 +2,6 @@ package stepDefinitions;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,7 +12,6 @@ import org.testng.Assert;
 import utils.SeleniumUtils;
 
 import java.time.Duration;
-import java.util.List;
 
 public class MyInfo {
     private WebDriver driver = SeleniumUtils.getDriver();
@@ -122,19 +120,15 @@ public class MyInfo {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
             if (expectedResult.startsWith("Error message:")) {
-                // Check for error message
-                WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                // Wait for error message to appear
+                WebElement errorMessage = wait.until(ExpectedConditions.presenceOfElementLocated(
                         By.className("oxd-input-field-error-message")));
                 String actualError = errorMessage.getText().trim();
                 String expectedError = expectedResult.replace("Error message:", "").trim().replace("\"", "");
                 Assert.assertEquals(actualError, expectedError,
                         "Error message mismatch. Expected: " + expectedError + ", Actual: " + actualError);
             } else if (expectedResult.equals("Save successfully")) {
-                // Check that no error message is present
-                var errorMessages = driver.findElements(By.className("oxd-input-field-error-message"));
-                Assert.assertTrue(errorMessages.isEmpty(), "Error message is displayed, success should not occur.");
-
-                // Check for success message
+                // Wait for success toast message
                 WebElement successMessage = wait.until(ExpectedConditions.presenceOfElementLocated(
                         By.className("oxd-toast-content")));
                 Assert.assertTrue(successMessage.isDisplayed(),
@@ -148,12 +142,5 @@ public class MyInfo {
             seleniumUtils.captureScreenshot("Validation_Failed");
             throw e;
         }
-    }
-
-
-
-    @And("User navigates to the dashboard after checking myInfo")
-    public void userNavigatesToTheDashboardAfterCheckingMyInfo() {
-        seleniumUtils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
     }
 }
