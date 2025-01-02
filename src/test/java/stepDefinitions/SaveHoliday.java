@@ -28,6 +28,7 @@ public class SaveHoliday {
     @Given("the user navigates to the Save Holidays page")
     public void theUserNavigatesToTheSaveHolidaysPage() {
         seleniumUtils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/leave/saveHolidays");
+
         seleniumUtils.addDelay(2);
         seleniumUtils.captureScreenshot("NavigateToSaveHolidaysPage");
     }
