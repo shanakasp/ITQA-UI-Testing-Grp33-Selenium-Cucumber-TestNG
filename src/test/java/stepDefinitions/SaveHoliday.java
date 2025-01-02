@@ -30,10 +30,6 @@ public class SaveHoliday {
     }
 
 
-
-
-
-
     @Given("the user navigates to the Save Holidays page")
     public void theUserNavigatesToTheSaveHolidaysPage() {
         // Navigate to the Holiday List page first
@@ -76,15 +72,15 @@ public class SaveHoliday {
         seleniumUtils.addDelay(1);
         seleniumUtils.captureScreenshot(buttonName + "ButtonClick");
     }
-
-
     @Then("the user should see a success message")
     public void theUserShouldSeeASuccessMessage() {
         WebElement successMessage = seleniumUtils.findElementWithWait(
                 By.xpath("//span[contains(@class,'oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message')]"));
-        Assert.assertTrue(successMessage.getText().contains("success"), "Expected success message does not match.");
+        Assert.assertTrue(successMessage.getText().contains("success"), "success.");
         seleniumUtils.captureScreenshot("SuccessMessage");
     }
+
+
 
 
     @After
