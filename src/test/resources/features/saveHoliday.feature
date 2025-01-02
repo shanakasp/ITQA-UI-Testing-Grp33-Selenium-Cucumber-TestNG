@@ -37,6 +37,5 @@ Feature: Save Holidays
 
   Scenario: Add a holiday successfully.
     Given the user navigates to the Save Holidays page
-    When the user enters holiday details with name "New Year" and date "1930-10-03"
+    When the user enters holiday details with name "New Year" and date "1946-07-04"
     And the user clicks on the "Save" button
-
