@@ -43,15 +43,17 @@ public class SeleniumUtils {
                 "src/test/resources/driver/chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
-        options.setBinary("C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe");
+        options.addArguments("--start-maximized");
+//        options.setBinary("C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe");
+                options.setBinary("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe");
 
-        options.addArguments(
-                "--remote-allow-origins=*",
-                "--no-sandbox",
-                "--disable-dev-shm-usage",
-                "--disable-gpu",
-                "--disable-extensions"
-        );
+//        options.addArguments(
+//                "--remote-allow-origins=*",
+//                "--no-sandbox",
+//                "--disable-dev-shm-usage",
+//                "--disable-gpu",
+//                "--disable-extensions"
+//        );
 
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
