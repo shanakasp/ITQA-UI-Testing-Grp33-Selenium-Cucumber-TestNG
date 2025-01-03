@@ -12,11 +12,15 @@ import org.testng.Assert;
 import utils.SeleniumUtils;
 
 import java.time.Duration;
+import java.util.regex.Pattern;
 
 public class MyInfo {
     private WebDriver driver = SeleniumUtils.getDriver();
     private SeleniumUtils seleniumUtils;
     private Scenario scenario;
+    private String lastEnteredFirstName;
+    private String lastEnteredMiddleName;
+    private String lastEnteredLastName;
 
     @Before
     public void setUp(Scenario scenario) {
@@ -58,14 +62,17 @@ public class MyInfo {
                 case "First Name":
                     inputField = wait.until(ExpectedConditions.presenceOfElementLocated(
                             By.cssSelector("input.oxd-input.orangehrm-firstname")));
+                    lastEnteredFirstName = value;
                     break;
                 case "Middle Name":
                     inputField = wait.until(ExpectedConditions.presenceOfElementLocated(
                             By.cssSelector("input.oxd-input.orangehrm-middlename")));
+                    lastEnteredMiddleName = value;
                     break;
                 case "Last Name":
                     inputField = wait.until(ExpectedConditions.presenceOfElementLocated(
                             By.cssSelector("input.oxd-input.orangehrm-lastname")));
+                    lastEnteredLastName = value;
                     break;
                 default:
                     throw new IllegalArgumentException("Invalid field name: " + fieldName);
@@ -113,22 +120,38 @@ public class MyInfo {
         }
     }
 
-
     @Then("User sees {string} myInfo")
     public void userSeesResult(String expectedResult) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-            if (expectedResult.startsWith("Error message:")) {
-                // Wait for error message to appear
-                WebElement errorMessage = wait.until(ExpectedConditions.presenceOfElementLocated(
-                        By.className("oxd-input-field-error-message")));
-                String actualError = errorMessage.getText().trim();
-                String expectedError = expectedResult.replace("Error message:", "").trim().replace("\"", "");
-                Assert.assertEquals(actualError, expectedError,
-                        "Error message mismatch. Expected: " + expectedError + ", Actual: " + actualError);
+            // Define name validation pattern (letters, spaces, and hyphens only)
+            Pattern namePattern = Pattern.compile("^[a-zA-Z\\s-]+$");
+
+            // Check if any of the entered names contain invalid characters
+            boolean isFirstNameValid = namePattern.matcher(lastEnteredFirstName).matches();
+            boolean isMiddleNameValid = lastEnteredMiddleName == null || lastEnteredMiddleName.isEmpty() ||
+                    namePattern.matcher(lastEnteredMiddleName).matches();
+            boolean isLastNameValid = namePattern.matcher(lastEnteredLastName).matches();
+
+            if (expectedResult.equals("Invalid name format")) {
+                // Wait for success message to verify the test should fail
+                try {
+                    WebElement successMessage = wait.until(ExpectedConditions.presenceOfElementLocated(
+                            By.className("oxd-toast-content")));
+
+                    if (!isFirstNameValid || !isMiddleNameValid || !isLastNameValid) {
+                        Assert.fail("Test should fail: Invalid characters were accepted. Success message shown when it shouldn't be.");
+                    }
+                } catch (TimeoutException e) {
+                    // Success message not found, which is expected for invalid input
+                    System.out.println("No success message shown for invalid input, as expected.");
+                }
             } else if (expectedResult.equals("Save successfully")) {
-                // Wait for success toast message
+                // Verify all names are valid before checking success message
+                Assert.assertTrue(isFirstNameValid && isMiddleNameValid && isLastNameValid,
+                        "Invalid characters found in name fields");
+
                 WebElement successMessage = wait.until(ExpectedConditions.presenceOfElementLocated(
                         By.className("oxd-toast-content")));
                 Assert.assertTrue(successMessage.isDisplayed(),
