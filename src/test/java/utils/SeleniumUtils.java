@@ -43,7 +43,7 @@ public class SeleniumUtils {
                 "src/test/resources/driver/chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
-        options.setBinary("C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe");
+        options.setBinary("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
 
         options.addArguments(
                 "--remote-allow-origins=*",
