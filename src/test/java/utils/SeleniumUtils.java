@@ -130,4 +130,9 @@ public class SeleniumUtils {
     public WebDriverWait getWait() {
         return wait;
     }
+
+    public String sanitizeFileName(String buttonText) {
+        return buttonText;
+    }
+
 }
