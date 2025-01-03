@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.Kumari_204111C;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -7,7 +7,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;

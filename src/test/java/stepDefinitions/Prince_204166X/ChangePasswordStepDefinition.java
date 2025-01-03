@@ -1,10 +1,8 @@
-package stepDefinitions;
+package stepDefinitions.Prince_204166X;
 
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
@@ -13,7 +11,6 @@ import org.testng.Assert;
 import utils.SeleniumUtils;
 
 import java.time.Duration;
-import java.util.List;
 
 public class ChangePasswordStepDefinition {
     private SeleniumUtils seleniumUtils;

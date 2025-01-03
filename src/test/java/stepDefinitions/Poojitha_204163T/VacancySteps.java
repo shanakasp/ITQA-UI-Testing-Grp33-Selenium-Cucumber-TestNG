@@ -1,20 +1,16 @@
-package stepDefinitions;
+package stepDefinitions.Poojitha_204163T;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.SeleniumUtils;
-
-import java.util.List;
-import java.util.Random;
 
 public class VacancySteps {
     private SeleniumUtils seleniumUtils;
