@@ -1,6 +1,5 @@
 # 🚀 UI Automation With Selenium - Cucumber - TestNG - AllureReports
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-blue)
 ![Java](https://img.shields.io/badge/Java-8+-orange)
 ![Maven](https://img.shields.io/badge/Maven-3.6+-red)
 
