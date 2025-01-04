@@ -32,7 +32,7 @@ A powerful, enterprise-grade UI automation framework combining the strengths of 
 ### Quick Setup
 ```bash
 # Clone the repository
-git clone https://github.com/shanakasp/ITQA-API-Testing-Grp33-RestAssured-Cucumber-TestNG.git
+git clone https://github.com/shanakasp/ITQA-UI-Testing-Grp33-Selenium-Cucumber-TestNG.git
 
 # Navigate to project directory
 cd api-automation-framework
